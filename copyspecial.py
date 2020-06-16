@@ -7,7 +7,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 # give credits
-__author__ = "???"
+__author__ = "Amanda Yonce, Nikal Morgan, and study group, written by Kathryn Anderson"
 
 import re
 import os
@@ -19,8 +19,12 @@ import argparse
 
 def get_special_paths(dirname):
     """Given a dirname, returns a list of all its special files."""
-    # your code here
-    return
+    special_dir_files = []
+    for file in os.listdir(dirname):
+        special_file = re.findall(r'__(\w+)__', file)
+        if special_file:
+            special_dir_files.append(os.path.abspath(file))
+    return special_dir_files
 
 
 def copy_to(path_list, dest_dir):
